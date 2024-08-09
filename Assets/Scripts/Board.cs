@@ -14,8 +14,11 @@ public sealed class Board : MonoBehaviour
     public Row[] rows;
 
     [SerializeField] ItemDataBase itemDataBase;
-    [SerializeField] int Width;
-    [SerializeField] int Height;
+    [SerializeField] int width;
+    [SerializeField] int height;
+
+    public int Width => width;
+    public int Height => height;
 
     private List<Tile> selectedTiles = new();
 

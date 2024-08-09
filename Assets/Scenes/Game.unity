@@ -2346,8 +2346,8 @@ MonoBehaviour:
   - {fileID: 833867609}
   - {fileID: 182580068}
   itemDataBase: {fileID: 11400000, guid: 352717ce01e75db439245d095c98ee06, type: 2}
-  Width: 8
-  Height: 8
+  width: 8
+  height: 8
 --- !u!1 &1390785896
 GameObject:
   m_ObjectHideFlags: 0
