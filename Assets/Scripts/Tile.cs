@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] Image icon;
-    [SerializeField] Button button;
+    public Image icon;
     private Item item;
     public int x;
     public int y;
-
+    
     public Item Item
     {
         get { return item; }
@@ -21,5 +18,10 @@ public class Tile : MonoBehaviour
             item = value;
             icon.sprite = item.Sprite;
         }
+    }
+
+    public void OnClick()
+    {
+        Board.Instance.Select(this);
     }
 }

@@ -2336,7 +2336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0fc78d31daf3542817bbb96a4680ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDataBase: {fileID: 11400000, guid: 352717ce01e75db439245d095c98ee06, type: 2}
   rows:
   - {fileID: 8930344549481378302}
   - {fileID: 820450959}
@@ -2346,6 +2345,7 @@ MonoBehaviour:
   - {fileID: 1226247802}
   - {fileID: 833867609}
   - {fileID: 182580068}
+  itemDataBase: {fileID: 11400000, guid: 352717ce01e75db439245d095c98ee06, type: 2}
   Width: 8
   Height: 8
 --- !u!1 &1390785896
@@ -3401,6 +3401,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1025868544953885871, guid: 6a4b637a53fc8a94e93fd5e28dfbf670, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2069075965099729511, guid: 6a4b637a53fc8a94e93fd5e28dfbf670, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3632,6 +3636,10 @@ PrefabInstance:
     - target: {fileID: 7012520024785018053, guid: 6a4b637a53fc8a94e93fd5e28dfbf670, type: 3}
       propertyPath: m_Name
       value: Row
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733087453951920485, guid: 6a4b637a53fc8a94e93fd5e28dfbf670, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7733087453951920485, guid: 6a4b637a53fc8a94e93fd5e28dfbf670, type: 3}
       propertyPath: m_AnchorMax.y

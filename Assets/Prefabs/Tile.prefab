@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -85,8 +85,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7501731024198388280}
-  - component: {fileID: 2607483291977018300}
   - component: {fileID: 4023601021076833695}
+  - component: {fileID: 970082127225022450}
   m_Layer: 5
   m_Name: Tile
   m_TagString: Untagged
@@ -115,7 +115,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2607483291977018300
+--- !u!114 &4023601021076833695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588963705687522922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a939d82adf6d20c40888ed2bbf2e68b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 5392087915274867311}
+  x: 0
+  y: 0
+--- !u!114 &970082127225022450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,20 +173,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5392087915274867311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &4023601021076833695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3588963705687522922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a939d82adf6d20c40888ed2bbf2e68b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  icon: {fileID: 5392087915274867311}
-  button: {fileID: 2607483291977018300}
+      m_Calls:
+      - m_Target: {fileID: 4023601021076833695}
+        m_TargetAssemblyTypeName: Tile, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
