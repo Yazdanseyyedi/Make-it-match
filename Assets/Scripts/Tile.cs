@@ -33,7 +33,33 @@ public class Tile : MonoBehaviour
     public Tile Top => y > 0 ? Board.Instance.Tiles[x, y - 1] : null;
     public Tile Bottom => y < Board.Instance.Height - 1 ? Board.Instance.Tiles[x, y + 1] : null;
 
-    public Tile[] Neighbours => new Tile[] { Left, Right, Top, Bottom };
+    public List<Tile> LeftToRightConnectedTiles()
+    {
+        List<Tile> result = new();
+        var leftConnectedTile = GetLeftConnectedTile();
+        var rightConnectedTile = GetRightConnectedTile();
+        result = rightConnectedTile;
+        foreach (var item in leftConnectedTile)
+        {
+            if(!rightConnectedTile.Contains(item))
+                result.Add(item);
+        }
+        return result;
+    }
+
+    public List<Tile> UpToDownConnectedTiles()
+    {
+        List<Tile> result = new();
+        var topConnectedTile = GetTopConnectedTile();
+        var bottomConnectedTile = GetBottomConnectedTile();
+        result = topConnectedTile;
+        foreach (var item in bottomConnectedTile)
+        {
+            if (!topConnectedTile.Contains(item))
+                result.Add(item);
+        }
+        return result;
+    }
 
     public List<Tile> GetConnectedTiles()
     {

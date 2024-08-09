@@ -57,13 +57,21 @@ public sealed class Board : MonoBehaviour
         if (!selectedTiles.Contains(tile))
             selectedTiles.Add(tile);
 
-        if(selectedTiles.Count < 2)
+        if (selectedTiles.Count < 2)
             return;
 
         Debug.Log($"Tile0:({selectedTiles[0].x} , {selectedTiles[0].y}) , Tile1:({selectedTiles[1].x} , {selectedTiles[1].y})");
 
-        await Swap(selectedTiles[0],selectedTiles[1]);
+        await Swap(selectedTiles[0], selectedTiles[1]);
 
+        if (CanPop())
+        {
+            Pop();
+        }
+        else
+        {
+            await Swap(selectedTiles[0], selectedTiles[1]);
+        }
         selectedTiles.Clear();
     }
 
@@ -89,5 +97,56 @@ public sealed class Board : MonoBehaviour
         var tile1Item = tile1.Item;
         tile1.Item = tile2.Item;
         tile2.Item = tile1Item;
+    }
+
+    private bool CanPop()
+    {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (Tiles[x, y].LeftToRightConnectedTiles().Count > 2 || Tiles[x, y].UpToDownConnectedTiles().Count > 2)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private async void Pop()
+    {
+        var deflateSequence = DOTween.Sequence();
+
+        for (var y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                var tile = Tiles[x, y];
+
+                var connectedUpToDownTiles = tile.UpToDownConnectedTiles();
+                var connectedLeftToRightTiles = tile.LeftToRightConnectedTiles();
+
+                if (connectedLeftToRightTiles.Count >= 3)
+                {
+                    foreach (var connectedTile in connectedLeftToRightTiles)
+                    {
+                        deflateSequence.Join(connectedTile.icon.transform.DOScale(Vector3.zero, 0.25f));
+                    }
+
+                }
+
+                if (connectedUpToDownTiles.Count >= 3)
+                {
+                    foreach (var connectedTile in connectedUpToDownTiles)
+                    {
+                        deflateSequence.Join(connectedTile.icon.transform.DOScale(Vector3.zero, 0.25f));
+                    }
+
+                }
+
+            }
+        }
+        await deflateSequence.Play().AsyncWaitForCompletion();
     }
 }
