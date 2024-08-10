@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 297065483138533109}
   - component: {fileID: 297065483138533107}
   - component: {fileID: 297065483138533108}
-  - component: {fileID: 2908051002146390353}
+  - component: {fileID: 9078604379929237421}
+  - component: {fileID: 8711276829773689149}
   m_Layer: 0
   m_Name: purple
   m_TagString: Untagged
@@ -77,7 +78,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2908051002146390353
+--- !u!58 &9078604379929237421
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297065483138533110}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 18
+--- !u!114 &8711276829773689149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,6 +103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 297065483138533110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7a6f2e8235dd34eab73e0e55b3a853, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bb428f55e73e5e4782ed55baf3fac05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SwipAngle: 0

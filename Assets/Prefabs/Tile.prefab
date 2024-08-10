@@ -106,9 +106,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5f46211f87c8646905306e06b87e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 822329212533924912, guid: eeb81aa77828e3142899df7b6d6dab55, type: 3}
-  - {fileID: 7779948236548749027, guid: a5a3eba33a2224f4bb7f194b047cdc4a, type: 3}
-  - {fileID: 297065483138533110, guid: c3199b77c144fd742b0c41715b5793e7, type: 3}
-  - {fileID: 9054875223321267059, guid: 2ca57a4e07f796740a27e712a0430acf, type: 3}
-  - {fileID: 7017545438583291260, guid: 89cc3e921c7bce943a05db5abe12e8a9, type: 3}

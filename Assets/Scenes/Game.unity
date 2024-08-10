@@ -374,6 +374,12 @@ MonoBehaviour:
   height: 8
   tilePrefab: {fileID: 3588963705687522922, guid: 9ec86d6a0300ad148bc0f0e4b63c685a, type: 3}
   tilesHolder: {fileID: 1394726815}
+  tiles:
+  - {fileID: 297065483138533110, guid: c3199b77c144fd742b0c41715b5793e7, type: 3}
+  - {fileID: 9054875223321267059, guid: 2ca57a4e07f796740a27e712a0430acf, type: 3}
+  - {fileID: 822329212533924912, guid: eeb81aa77828e3142899df7b6d6dab55, type: 3}
+  - {fileID: 7779948236548749027, guid: a5a3eba33a2224f4bb7f194b047cdc4a, type: 3}
+  - {fileID: 7017545438583291260, guid: 89cc3e921c7bce943a05db5abe12e8a9, type: 3}
 --- !u!1 &1390785896
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +465,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1394726815}
+  - component: {fileID: 1394726817}
+  - component: {fileID: 1394726816}
   m_Layer: 5
   m_Name: Holder
   m_TagString: Untagged
@@ -486,6 +494,35 @@ RectTransform:
   m_AnchoredPosition: {x: -73.915634, y: -192.30219}
   m_SizeDelta: {x: 438.6042, y: 438.6042}
   m_Pivot: {x: -0.000000035390258, y: -0.000000016763806}
+--- !u!58 &1394726816
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394726814}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 500
+--- !u!114 &1394726817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394726814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb428f55e73e5e4782ed55baf3fac05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwipAngle: 0
 --- !u!1 &1865253768
 GameObject:
   m_ObjectHideFlags: 0
