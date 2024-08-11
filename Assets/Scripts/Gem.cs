@@ -42,8 +42,7 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (isMatched)
         {
-            Image gemImage = GetComponent<Image>();
-            gemImage.color = new Color(0f, 0f, 0f, 0.2f);
+            gameObject.SetActive(false);
         }
     }
 
