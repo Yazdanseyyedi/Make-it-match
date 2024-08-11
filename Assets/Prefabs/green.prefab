@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7858931232873883427}
   m_Layer: 0
   m_Name: green
-  m_TagString: Untagged
+  m_TagString: green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,4 +111,5 @@ MonoBehaviour:
   row: 0
   targetX: 0
   targetY: 0
+  isMatched: 0
   SwipAngle: 0

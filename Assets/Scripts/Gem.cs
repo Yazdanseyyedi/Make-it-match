@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -14,6 +16,7 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public int row;
     public int targetX;
     public int targetY;
+    public bool isMatched;
     public float SwipAngle = 0;
     private Gem otherGem;
     private Vector2 tempPosition;
@@ -27,11 +30,23 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Update()
     {
+        FindMatches();
+        PopGem();
         targetX = 45 + (int)boardData.startPosition.x + 45 * column;
         targetY = 45 + (int)boardData.startPosition.y + 45 * row;
         MoveInXDirection();
         MoveInYDirection();
     }
+
+    private void PopGem()
+    {
+        if (isMatched)
+        {
+            Image gemImage = GetComponent<Image>();
+            gemImage.color = new Color(0f, 0f, 0f, 0.2f);
+        }
+    }
+
     private void MoveInXDirection()
     {
         if (Mathf.Abs(targetX - transform.position.x) > 0.1f)
@@ -94,6 +109,34 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             row -= 1;
         }
 
+    }
+
+    private void FindMatches()
+    {
+        if(column > 0 && column < boardData.Width - 1)
+        {
+            Gem leftGem = boardData.allGems[column - 1, row];
+            Gem rightGem = boardData.allGems[column + 1, row];
+            if (leftGem.tag == this.tag && rightGem.tag == this.tag)
+            {
+                leftGem.isMatched = true;
+                rightGem.isMatched = true;
+                isMatched = true;
+            }
+
+        }
+        if (row > 0 && row < boardData.Height - 1)
+        {
+            Gem downGem = boardData.allGems[column, row - 1];
+            Gem upGem = boardData.allGems[column, row + 1];
+            if (downGem.tag == this.tag && upGem.tag == this.tag)
+            {
+                downGem.isMatched = true;
+                upGem.isMatched = true;
+                isMatched = true;
+            }
+
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
