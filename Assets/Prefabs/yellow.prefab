@@ -106,4 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb428f55e73e5e4782ed55baf3fac05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardData: {fileID: 11400000, guid: 3245490a84d3a1144a1c5efdb85f7e6c, type: 2}
+  column: 0
+  row: 0
+  targetX: 0
+  targetY: 0
   SwipAngle: 0

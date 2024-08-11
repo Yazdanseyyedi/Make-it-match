@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e719c9abf0bc884418971b31b0ad3363, type: 3}
-  m_Name: Yellow
+  m_Script: {fileID: 11500000, guid: 4baae58f3c031c84b8e74daa08652601, type: 3}
+  m_Name: BoardData
   m_EditorClassIdentifier: 
-  value: 5
-  sprite: {fileID: 21300000, guid: cdc6f2eab19a32640837e03d7e86d7c7, type: 3}
+  startPosition: {x: 303.58435, y: 107.697815}
+  width: 8
+  height: 8
