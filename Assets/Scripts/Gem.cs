@@ -69,26 +69,25 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void MovePieces()
     {
         Debug.Log(SwipAngle);
-        if (SwipAngle > -45 && SwipAngle <= 45 && column < boardData.Width)
+        if ((SwipAngle > -45 && SwipAngle <= 45) && column < boardData.Width - 1)
         {
-            //Right Swip
             otherGem = boardData.allGems[column + 1, row];
             otherGem.column -= 1;
             column += 1;
         }
-        else if (SwipAngle > 45 && SwipAngle <= 135 && row < boardData.Height)
+        else if ((SwipAngle > 45 && SwipAngle <= 135) && row < boardData.Height - 1)
         {
             otherGem = boardData.allGems[column , row + 1];
             otherGem.row -= 1;
             row += 1;
         }
-        else if (SwipAngle > 135 || SwipAngle <= -135 && column > 0)
+        else if ((SwipAngle > 135 || SwipAngle <= -135) && column > 0)
         {
             otherGem = boardData.allGems[column - 1, row];
             otherGem.column += 1;
             column -= 1;
         }
-        else if (SwipAngle < -45 || SwipAngle >= -135 && row > 0)
+        else if ((SwipAngle < -45 && SwipAngle >= -135) && row > 0)
         {
             otherGem = boardData.allGems[column, row - 1];
             otherGem.row += 1;
