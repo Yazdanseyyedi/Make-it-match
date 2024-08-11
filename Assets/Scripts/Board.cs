@@ -45,6 +45,8 @@ public sealed class Board : MonoBehaviour
                 gem.gameObject.name = backgroundTile.gameObject.name;
                 gem.column = x;
                 gem.row = y;
+                gem.previousColumn = x;
+                gem.previousRow = y;
                 boardData.allGems[x, y] = gem;
             }
         }

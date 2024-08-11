@@ -14,6 +14,8 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Vector2 finalTouchPosition;
     public int column;
     public int row;
+    public int previousColumn;
+    public int previousRow;
     public int targetX;
     public int targetY;
     public bool isMatched;
@@ -42,7 +44,8 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (isMatched)
         {
-            gameObject.SetActive(false);
+            Image gemImage = GetComponent<Image>();
+            gemImage.color = new Color(0f, 0f, 0f, 0.2f);
         }
     }
 
@@ -107,6 +110,7 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             otherGem.row += 1;
             row -= 1;
         }
+        StartCoroutine(CheckMove());
 
     }
 
@@ -135,6 +139,22 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 isMatched = true;
             }
 
+        }
+    }
+
+    public IEnumerator CheckMove()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (otherGem != null) 
+        {
+            if(!isMatched && !otherGem.isMatched)
+            {
+                otherGem.row = row;
+                otherGem.column = column;
+                row = previousRow;
+                column = previousColumn;
+            }
+            otherGem = null;
         }
     }
 
