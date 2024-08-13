@@ -119,5 +119,26 @@ public sealed class Board : MonoBehaviour
                     DestroyMatches(x,y);
             }
         }
+        StartCoroutine(DecreaseRow());
+    }
+
+    private IEnumerator DecreaseRow()
+    {
+        int nullCount = 0;
+        for (int x = 0; x < boardData.Width; x++)
+        {
+            for (int y = 0; y < boardData.Height; y++)
+            {
+                if (boardData.allGems[x, y] == null)
+                    nullCount++;
+                else if(nullCount > 0)
+                {
+                    boardData.allGems[x, y].row -= nullCount;
+                    boardData.allGems[x, y] = null;
+                }
+            }
+            nullCount = 0;
+        }
+        yield return new WaitForSeconds(0.4f);
     }
 }

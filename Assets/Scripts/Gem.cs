@@ -47,6 +47,7 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             Image gemImage = GetComponent<Image>();
             gemImage.color = new Color(0f, 0f, 0f, 0.6f);
+            boardEventHandler.RaiseDestroyMatchesAction();
         }
     }
 
@@ -56,12 +57,15 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             tempPosition = new Vector2(targetX, transform.position.y);
             transform.position = Vector2.Lerp(transform.position, tempPosition, 0.4f);
+            if (boardData.allGems[column, row] != this)
+            {
+                boardData.allGems[column, row] = this;
+            }
         }
         else
         {
             tempPosition = new Vector2(targetX, transform.position.y);
             transform.position = tempPosition;
-            boardData.allGems[column, row] = this;
         }
     }
 
@@ -71,12 +75,15 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             tempPosition = new Vector2(transform.position.x, targetY);
             transform.position = Vector2.Lerp(transform.position, tempPosition, 0.4f);
+            if (boardData.allGems[column, row] != this)
+            {
+                boardData.allGems[column, row] = this;
+            }
         }
         else
         {
             tempPosition = new Vector2(transform.position.x, targetY);
             transform.position = tempPosition;
-            boardData.allGems[column, row] = this;
         }
     }
     private void CalculateAngle()
