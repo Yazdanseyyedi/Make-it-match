@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] BoardData boardData;
+    [SerializeField] BoardEventHandler boardEventHandler;
     private Vector2 firstTouchPosition;
     private Vector2 finalTouchPosition;
     public int column;
@@ -45,7 +46,7 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (isMatched)
         {
             Image gemImage = GetComponent<Image>();
-            gemImage.color = new Color(0f, 0f, 0f, 0.2f);
+            gemImage.color = new Color(0f, 0f, 0f, 0.6f);
         }
     }
 
@@ -164,6 +165,8 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 row = previousRow;
                 column = previousColumn;
             }
+            else
+                boardEventHandler.RaiseDestroyMatchesAction();
             otherGem = null;
         }
     }

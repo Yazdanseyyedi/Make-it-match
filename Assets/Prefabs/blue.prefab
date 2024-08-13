@@ -107,8 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardData: {fileID: 11400000, guid: 3245490a84d3a1144a1c5efdb85f7e6c, type: 2}
+  boardEventHandler: {fileID: 11400000, guid: 31dbca6cf4b84e64d8fdf2115cc69097, type: 2}
   column: 0
   row: 0
+  previousColumn: 0
+  previousRow: 0
   targetX: 0
   targetY: 0
   isMatched: 0

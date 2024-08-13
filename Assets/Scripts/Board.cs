@@ -13,6 +13,7 @@ public sealed class Board : MonoBehaviour
     [SerializeField] Gem[] tiles;
     [SerializeField] BoardData boardData;
     [SerializeField] Transform tilesHolder;
+    [SerializeField] BoardEventHandler boardEventHandler;
     private BackgroundTile[,] allTiles;
 
 
@@ -27,6 +28,13 @@ public sealed class Board : MonoBehaviour
     private void Start()
     {
         Setup();
+        boardEventHandler.DestroyMatches -= DestroyMatches;
+        boardEventHandler.DestroyMatches += DestroyMatches;
+    }
+
+    private void OnDestroy()
+    {
+        boardEventHandler.DestroyMatches -= DestroyMatches;
     }
 
     private void Setup()
@@ -90,5 +98,26 @@ public sealed class Board : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void DestroyMatches(int column, int row)
+    {
+        if (boardData.allGems[column, row].isMatched) 
+        {
+            Destroy(boardData.allGems[column, row].gameObject);
+            boardData.allGems[column,row] = null;
+        }
+    }
+
+    private void DestroyMatches()
+    {
+        for (int x = 0; x < boardData.Width; x++)
+        {
+            for (int y = 0; y < boardData.Height; y++)
+            {
+                if (boardData.allGems[x,y] != null)
+                    DestroyMatches(x,y);
+            }
+        }
     }
 }
