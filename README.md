@@ -1,6 +1,3 @@
-Certainly! I'll update the README to include information about the `BoardEventHandler` class. Here’s the revised README:
-
----
 
 # Match-3 Game
 
