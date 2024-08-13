@@ -140,5 +140,59 @@ public sealed class Board : MonoBehaviour
             nullCount = 0;
         }
         yield return new WaitForSeconds(0.4f);
+        StartCoroutine(FillBoard());
+    }
+
+    private void RefillBoard()
+    {
+        for (int x = 0; x < boardData.Width; x++)
+        {
+            for (int y = 0; y < boardData.Height; y++)
+            {
+                if (boardData.allGems[x, y] == null)
+                {
+                    Vector2 tempPosition = new Vector2(x,y);
+                    int gemToUse = Random.Range(0, tiles.Length);
+                    Gem gem = Instantiate(tiles[gemToUse], tempPosition, Quaternion.identity);
+                    gem.gameObject.transform.SetParent(this.transform);
+                    gem.gameObject.name = $"({x},{y})"; ;
+                    gem.column = x;
+                    gem.row = y;
+                    gem.previousColumn = x;
+                    gem.previousRow = y;
+                    boardData.allGems[x, y] = gem;
+                }
+            }
+        }
+    }
+
+    private bool MatchesOnBoard()
+    {
+        for (int x = 0; x < boardData.Width; x++)
+        {
+            for (int y = 0; y < boardData.Height; y++)
+            {
+                if (boardData.allGems[x, y] != null)
+                {
+                    if (boardData.allGems[x, y].isMatched)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false; 
+    }
+
+    private IEnumerator FillBoard()
+    {
+        RefillBoard();
+        yield return new WaitForSeconds(0.5f);
+
+        while (MatchesOnBoard())
+        {
+            yield return new WaitForSeconds(0.5f);
+            DestroyMatches();
+        }
     }
 }
