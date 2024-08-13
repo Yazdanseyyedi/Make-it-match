@@ -60,7 +60,7 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             tempPosition = new Vector2(targetX, transform.position.y);
             transform.position = tempPosition;
-            boardData.allGems[column,row] = this;
+            boardData.allGems[column, row] = this;
         }
     }
 
@@ -80,7 +80,11 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     private void CalculateAngle()
     {
-        SwipAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
+        if (Mathf.Abs(finalTouchPosition.y - firstTouchPosition.y) > 1f || Mathf.Abs(finalTouchPosition.x - firstTouchPosition.x) > 1f)
+        {
+            SwipAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
+            MovePieces();
+        }
     }
 
     private void MovePieces()
@@ -94,7 +98,7 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
         else if ((SwipAngle > 45 && SwipAngle <= 135) && row < boardData.Height - 1)
         {
-            otherGem = boardData.allGems[column , row + 1];
+            otherGem = boardData.allGems[column, row + 1];
             otherGem.row -= 1;
             row += 1;
         }
@@ -116,15 +120,18 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void FindMatches()
     {
-        if(column > 0 && column < boardData.Width - 1)
+        if (column > 0 && column < boardData.Width - 1)
         {
             Gem leftGem = boardData.allGems[column - 1, row];
             Gem rightGem = boardData.allGems[column + 1, row];
-            if (leftGem.tag == this.tag && rightGem.tag == this.tag)
+            if (leftGem != null && rightGem != null)
             {
-                leftGem.isMatched = true;
-                rightGem.isMatched = true;
-                isMatched = true;
+                if (leftGem.tag == this.tag && rightGem.tag == this.tag)
+                {
+                    leftGem.isMatched = true;
+                    rightGem.isMatched = true;
+                    isMatched = true;
+                }
             }
 
         }
@@ -132,11 +139,14 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             Gem downGem = boardData.allGems[column, row - 1];
             Gem upGem = boardData.allGems[column, row + 1];
-            if (downGem.tag == this.tag && upGem.tag == this.tag)
+            if (downGem != null && upGem != null)
             {
-                downGem.isMatched = true;
-                upGem.isMatched = true;
-                isMatched = true;
+                if (downGem.tag == this.tag && upGem.tag == this.tag)
+                {
+                    downGem.isMatched = true;
+                    upGem.isMatched = true;
+                    isMatched = true;
+                }
             }
 
         }
@@ -145,9 +155,9 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public IEnumerator CheckMove()
     {
         yield return new WaitForSeconds(0.5f);
-        if (otherGem != null) 
+        if (otherGem != null)
         {
-            if(!isMatched && !otherGem.isMatched)
+            if (!isMatched && !otherGem.isMatched)
             {
                 otherGem.row = row;
                 otherGem.column = column;
@@ -167,6 +177,5 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         finalTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         CalculateAngle();
-        MovePieces();
     }
 }
