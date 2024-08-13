@@ -370,8 +370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0fc78d31daf3542817bbb96a4680ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 8
-  height: 8
   tilePrefab: {fileID: 3588963705687522922, guid: 9ec86d6a0300ad148bc0f0e4b63c685a, type: 3}
   tiles:
   - {fileID: 5148698653853000789, guid: a5a3eba33a2224f4bb7f194b047cdc4a, type: 3}
@@ -381,6 +379,7 @@ MonoBehaviour:
   - {fileID: -8901928276366293934, guid: 89cc3e921c7bce943a05db5abe12e8a9, type: 3}
   boardData: {fileID: 11400000, guid: 3245490a84d3a1144a1c5efdb85f7e6c, type: 2}
   tilesHolder: {fileID: 1394726815}
+  boardEventHandler: {fileID: 11400000, guid: 31dbca6cf4b84e64d8fdf2115cc69097, type: 2}
 --- !u!1 &1390785896
 GameObject:
   m_ObjectHideFlags: 0

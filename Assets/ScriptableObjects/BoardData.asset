@@ -15,3 +15,4 @@ MonoBehaviour:
   startPosition: {x: 303.58435, y: 107.697815}
   width: 8
   height: 8
+  offset: 40

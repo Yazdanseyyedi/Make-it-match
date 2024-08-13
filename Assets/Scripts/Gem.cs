@@ -25,11 +25,6 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Vector2 tempPosition;
 
 
-    private void Start()
-    {
-        targetX = (int)transform.position.x;
-        targetY = (int)transform.position.y;
-    }
 
     private void Update()
     {
@@ -101,24 +96,32 @@ public class Gem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if ((SwipAngle > -45 && SwipAngle <= 45) && column < boardData.Width - 1)
         {
             otherGem = boardData.allGems[column + 1, row];
+            previousRow = row;
+            previousColumn = column;
             otherGem.column -= 1;
             column += 1;
         }
         else if ((SwipAngle > 45 && SwipAngle <= 135) && row < boardData.Height - 1)
         {
             otherGem = boardData.allGems[column, row + 1];
+            previousRow = row;
+            previousColumn = column;
             otherGem.row -= 1;
             row += 1;
         }
         else if ((SwipAngle > 135 || SwipAngle <= -135) && column > 0)
         {
             otherGem = boardData.allGems[column - 1, row];
+            previousRow = row;
+            previousColumn = column;
             otherGem.column += 1;
             column -= 1;
         }
         else if ((SwipAngle < -45 && SwipAngle >= -135) && row > 0)
         {
             otherGem = boardData.allGems[column, row - 1];
+            previousRow = row;
+            previousColumn = column;
             otherGem.row += 1;
             row -= 1;
         }

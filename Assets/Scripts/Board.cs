@@ -43,7 +43,7 @@ public sealed class Board : MonoBehaviour
         {
             for (int y = 0; y < boardData.Height; y++)
             {
-                Vector2 tempPosition = new Vector2(45 + boardData.startPosition.x + 45 * x, 45 + boardData.startPosition.y + 45 * y);
+                Vector2 tempPosition = new Vector2(45 + boardData.startPosition.x + 45 * x, 45 + boardData.startPosition.y + 45 * y + boardData.Offset);
                 GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity, tilesHolder);
                 backgroundTile.transform.SetParent(this.transform);
                 backgroundTile.name = $"({x},{y})";
@@ -151,7 +151,7 @@ public sealed class Board : MonoBehaviour
             {
                 if (boardData.allGems[x, y] == null)
                 {
-                    Vector2 tempPosition = new Vector2(x,y);
+                    Vector2 tempPosition = new Vector2(45 + boardData.startPosition.x + 45 * x, 45 + boardData.startPosition.y + 45 * y + boardData.Offset);
                     int gemToUse = Random.Range(0, tiles.Length);
                     Gem gem = Instantiate(tiles[gemToUse], tempPosition, Quaternion.identity);
                     gem.gameObject.transform.SetParent(this.transform);

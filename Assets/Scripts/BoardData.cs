@@ -9,7 +9,9 @@ public class BoardData : ScriptableObject
     public Gem[,] allGems;
     [SerializeField] int width;
     [SerializeField] int height;
+    [SerializeField] int offset;
 
     public int Width => width;
     public int Height => height;
+    public int Offset => offset;
 }
